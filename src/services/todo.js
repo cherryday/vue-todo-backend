@@ -9,6 +9,18 @@ async function getAll (req, res) {
   }
 }
 
+async function create (req, res) {
+  const { name } = req.body
+
+  try {
+    const todo = await TodoModel.create({ name })
+    res.json(todo)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 module.exports = {
-  getAll
+  getAll,
+  create
 }
